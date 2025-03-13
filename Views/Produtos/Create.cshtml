@@ -1,0 +1,57 @@
+﻿@model ExemploEF.Models.Produto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1 class="my-4 text-center">Create Product</h1>
+
+    <h4 class="text-center">Produto</h4>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <!-- Exibição de erros de validação -->
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Nome -->
+                <div class="form-group">
+                    <label asp-for="Nome" class="control-label">Nome do produto</label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+
+                <!-- Estoque -->
+                <div class="form-group">
+                    <label asp-for="Estoque" class="control-label">Quantidade no estoque</label>
+                    <input asp-for="Estoque" class="form-control" />
+                    <span asp-validation-for="Estoque" class="text-danger"></span>
+                </div>
+
+                <!-- Categoria -->
+                <div class="form-group">
+                    <label asp-for="CategoriaId" class="control-label">Categoria</label>
+                    <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                </div>
+
+                <!-- Botão de Submit -->
+                <div class="form-group text-center">
+                    <input type="submit" value="Criar" class="btn btn-primary btn-lg" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Link para voltar -->
+    <div class="text-center mt-3">
+        <a asp-action="Index" class="btn btn-secondary btn-lg">Voltar para a lista</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
